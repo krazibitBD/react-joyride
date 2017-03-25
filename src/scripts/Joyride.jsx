@@ -679,13 +679,14 @@ class Joyride extends React.Component {
       return null;
     }
 
-    let el
-    if (step.isIframe && step.iFrameId){
+    let el;
+    if (step.isIframe && step.iFrameId) {
       const iframe = document.getElementById(step.iFrameId);
       const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
       el = innerDoc.querySelector(sanitizeSelector(step.selector));
-    } else {
-    el = document.querySelector(sanitizeSelector(step.selector));
+    }
+    else {
+      el = document.querySelector(sanitizeSelector(step.selector));
     }
 
     if (!el) {
