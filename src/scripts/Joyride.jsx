@@ -681,9 +681,21 @@ class Joyride extends React.Component {
 
     let el;
     if (step.isIframe && step.iFrameId) {
+      logger({
+        type: 'joyride:getStepTargetElement',
+        msg: 'Using IFrame',
+        warn: true,
+        debug: this.props.debug,
+      });
       const iframe = document.getElementById(step.iFrameId);
       const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
       el = innerDoc.querySelector(sanitizeSelector(step.selector));
+      logger({
+        type: 'joyride:getStepTargetElement',
+        msg: `Using IFrame seelected ${el}`,
+        warn: true,
+        debug: this.props.debug,
+      });
     }
     else {
       el = document.querySelector(sanitizeSelector(step.selector));
